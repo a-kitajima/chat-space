@@ -1,0 +1,56 @@
+.wrappwer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.chat-side {
+  background-color: #2f3e51;
+  height: 100%;
+  width: 300px;
+}
+
+.side-header {
+  background-color: #253141;
+  height: 100px;
+  width: 260px;
+  padding-left: 20px;
+  padding-right: 20px;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: #FFFFFF;
+    }
+    &__user-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #FFFFFF;
+      line-height: 100px;
+    }
+    &__menu {
+      display: flex;
+      li {
+        margin-left: 4.8px;
+      }
+    }
+  }
+}
+
+.groups {
+  width: 260px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.group {
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
