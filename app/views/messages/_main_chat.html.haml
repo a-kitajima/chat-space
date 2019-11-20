@@ -13,11 +13,26 @@
     =link_to "#" do 
       .main-header__edit-btn
         Edit
+
   .messages
     .message
       .message__upper-info
-        %p.message__upper-info__talker ユーザー名
+        %p.message__upper-info__talker ユーザー名1
         %p.message__upper-info__date 2019/11/20(Wed) 10:07:19
       %p.message__text メッセージ1
+    .message
+      .message__upper-info
+        %p.message__upper-info__talker ユーザー名2
+        %p.message__upper-info__date 2019/11/21(Wed) 10:07:19
       %p.message__text メッセージ2
+
   .form
+    %form.new_message{action: "#", method: "#"}
+      .input-box
+        %input.input-box__text{type: "text", placeholder: "type a message",}
+        %label.input-box__image
+          %i.far.fa-image.fa-2x
+          %input.input-box__image__file{type: "file"}
+      %input.submit-btn{type: "submit", value: "Send"}
+
+ 
