@@ -1,0 +1,12 @@
+.flash-box {
+  width: 100vw;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  &__alert {
+    background-color: #F35500;
+  }
+  &__notice {
+    background-color: #38aef0;
+  }
+}
