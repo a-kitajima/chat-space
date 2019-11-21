@@ -6,6 +6,9 @@ class MessagesController < ApplicationController
 
   private
   def move_to_sign_in
-    redirect_to new_user_session_path unless user_signed_in?
+    unless user_signed_in?
+      flash[:alert] = "ログインまたは登録が必要です。"
+      redirect_to new_user_session_path
+    end
   end
 end
