@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :move_to_sign_in, only: :index
   
   def index
+    
   end
 
   private
