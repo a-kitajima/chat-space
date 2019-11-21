@@ -1,0 +1,24 @@
+.chat-side
+  .side-header
+    .side-header__box
+      %p.side-header__box__user-name ユーザー名
+      %ul.side-header__box__menu
+        %li.side-header__box__menu__new-group
+          =link_to "#" do
+            %i.fas.fa-edit
+        %li.side-header__box__menu__edit-user
+          =link_to "#" do
+            %i.fa.fa-cog
+  .groups
+    =link_to "#" do
+      .group
+        %p.group__group-name グループ名1
+        %p.group__latest-message 最新投稿1
+    =link_to "#" do
+      .group
+        %p.group__group-name グループ名2
+        %p.group__latest-message 最新投稿2
+    =link_to "#" do
+      .group
+        %p.group__group-name グループ名3
+        %p.group__latest-message 最新投稿3
