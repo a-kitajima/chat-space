@@ -1,0 +1,5 @@
+.chat-group-form
+  %h1 新規チャットグループ
+  =form_for @group do |f| 
+    = render "error_messages", group: @group if @group.errors.any?
+    = render "form", f: f

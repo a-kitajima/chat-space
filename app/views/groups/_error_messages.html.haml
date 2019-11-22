@@ -1,0 +1,6 @@
+.chat-group-form__errors
+  %h2
+    #{group.errors.full_messages.length}件のエラーが発生しました。
+  %ul
+    - group.errors.full_messages.each do |message|
+      %li #{message}
