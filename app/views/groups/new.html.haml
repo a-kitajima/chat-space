@@ -1,23 +1,5 @@
 .chat-group-form
   %h1 新規チャットグループ
-  
   =form_for @group do |f| 
-    = render "groups/error_messages", group: @group if @group.errors.any?
-    .chat-group-form__field
-      .chat-group-form__field--left
-        = f.label :name, "グループ名", class: "chat-group-form__label"
-      .chat-group-form__field--right
-        = f.text_field :name, placeholder: "グループ名を入力してください", class:"chat_group_name chat-group-form__input"
-    .chat-group-form__field
-    / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときに使用します
-    .chat-group-form__field
-      .chat-group-form__field--left
-        = f.label :users, "チャットメンバー", class: "chat-group-form__label"
-      .chat-group-form__field--right
-        = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |b|
-          =b.label{b.check_box + b.text}
-    / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
-    .chat-group-form__field
-      .chat-group-form__field--left
-      .chat-group-form__field--right
-        = f.submit "登録する", class: "chat-group-form__action-btn"
+    = render "error_messages", group: @group if @group.errors.any?
+    = render "form", f: f
