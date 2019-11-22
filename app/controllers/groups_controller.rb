@@ -4,8 +4,13 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.create(group_params)
-    group.update(group_users)
+    @group = Group.new(group_params)
+    if @group.save
+      @group.update(group_users)
+      redirect_to root_path
+    else
+      render action: :new
+    end
   end
 
   def edit
