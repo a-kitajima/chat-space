@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :move_to_sign_in, only: :index
   
   def index
-    
+    @group = Group.first
   end
 
   private
