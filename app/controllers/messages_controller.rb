@@ -8,13 +8,12 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    if @message.body || @message.image
+    unless @message.body.empty? && @message.image.file.nil?
       @message.save
-      redirect_to group_messages_path
     else
       flash[:alert] = "メッセージを入力してください。"
-      render action: :index
     end
+    redirect_to group_messages_path
   end
 
   private
