@@ -1,18 +1,16 @@
 .chat-main
   .main-header
     .main-header__left-box
-      %h2.main-header__left-box__current-group グループ名
+      %h2.main-header__left-box__current-group #{group.name}
       %ul.main-header__left-box__member-list
         %p Member :
-        %li.main-header__left-box__member-list__member メンバー1
-        %li.main-header__left-box__member-list__member メンバー2
-        %li.main-header__left-box__member-list__member メンバー3
-        %li.main-header__left-box__member-list__member メンバー4
-        %li.main-header__left-box__member-list__member メンバー5
-        %li.main-header__left-box__member-list__member メンバー6
-    =link_to "#" do 
+        - group.users.each do |user|
+          %li.main-header__left-box__member-list__member #{user.name}
+
+    =link_to "/groups/#{group.id}/edit" do 
       .main-header__edit-btn
         Edit
+  
   .messages
     - messages.each do |message|
       .message
