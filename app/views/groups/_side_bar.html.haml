@@ -14,4 +14,12 @@
       =link_to "/groups/#{group.id}/messages" do
         .group
           %p.group__group-name #{group.name}
-          %p.group__latest-message まだメッセージがありません。
+          %p.group__latest-message
+            - if group.messages.present?
+              - latest_message = group.messages.last
+              - if latest_message.body.present?
+                #{latest_message.body}
+              - else
+                画像が投稿されています
+            - else
+              まだメッセージはありません。

@@ -8,8 +8,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    unless @message.body.empty? && @message.image.file.nil?
-      if @message.image.file
+    if @message.body.present? || @message.image.file.present?
+      if @message.image.file.present?
         resize_image(@message.image)
       end
       @message.save
