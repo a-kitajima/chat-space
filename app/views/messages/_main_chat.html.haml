@@ -26,13 +26,21 @@
         %p.message__upper-info__date 2019/11/21(Wed) 10:07:19
       %p.message__text メッセージ2
 
+  -# .form
+  -#   %form.new_message{action: "#", method: "#"}
+  -#     .input-box
+  -#       %input.input-box__text{type: "text", placeholder: "type a message",}
+  -#       %label.input-box__image
+  -#         %i.far.fa-image.fa-2x
+  -#         %input.input-box__image__file{type: "file"}
+  -#     %input.submit-btn{type: "submit", value: "Send"}
   .form
-    %form.new_message{action: "#", method: "#"}
+    =form_for [group, message] do |f|
       .input-box
-        %input.input-box__text{type: "text", placeholder: "type a message",}
+        = f.text_field :body, placeholder: "type a message", class:"input-box__text"
         %label.input-box__image
           %i.far.fa-image.fa-2x
-          %input.input-box__image__file{type: "file"}
-      %input.submit-btn{type: "submit", value: "Send"}
+          = f.file_field :file, class:"input-box__image__file"
+      = f.submit "Send", class: "submit-btn"
 
  
