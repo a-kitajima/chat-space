@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :move_to_sign_in, only: :index
+  before_action :move_to_sign_in
   
   def index
     @groups = current_user.groups

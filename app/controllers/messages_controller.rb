@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :move_to_sign_in
+
   def index
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
@@ -29,5 +31,12 @@ class MessagesController < ApplicationController
     resize_image = MiniMagick::Image.open(image.current_path)
     resize_image.resize "200x200"
     resize_image.write image.current_path
+  end
+
+  def move_to_sign_in
+    unless user_signed_in?
+      flash[:alert] = "ログインまたは登録が必要です。"
+      redirect_to new_user_session_path
+    end
   end
 end
