@@ -2,13 +2,13 @@ $(function() {
   function buildHTML(message){
     var message_image_tag = (message.image_url)?`<img src="${message.image_url}">`:"";
     var html = `<div class="message">
-                    <div class="message__upper-info">
-                      <p class="message__upper-info__talker">${message.user_name}</p>
-                      <p class="message__upper-info__date">${message.created_at}</p>
-                    </div>
-                    <p class="message__text">${message.body}</p>
-                    ${message_image_tag}
-                  </div>`
+                  <div class="message__upper-info">
+                    <p class="message__upper-info__talker">${message.user_name}</p>
+                    <p class="message__upper-info__date">${message.created_at}</p>
+                  </div>
+                  <p class="message__text">${message.body}</p>
+                  ${message_image_tag}
+                </div>`
     return html;
   }
   $('#new_message').on('submit', function(e) {
