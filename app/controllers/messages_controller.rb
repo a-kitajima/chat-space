@@ -10,15 +10,14 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    if @message.body.present? || @message.image.file.present?
-      if @message.image.file.present?
-        resize_image(@message.image)
+    resize_image(@message.image) if @message.image.file.present?
+    respond_to do |format|
+      if @message.save
+        format.json
+      else
+        format.json { redirect_to group_messages_path }
       end
-      @message.save
-    else
-      flash[:alert] = "メッセージを入力してください。"
     end
-    redirect_to group_messages_path
   end
 
   private

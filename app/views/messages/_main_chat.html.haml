@@ -16,7 +16,7 @@
       .message
         .message__upper-info
           %p.message__upper-info__talker #{message.user.name}
-          %p.message__upper-info__date #{message.created_at}
+          %p.message__upper-info__date #{message.created_at.to_s(:datetime)}
         %p.message__text #{message.body}
         %img(src="#{message.image.url}")
 
