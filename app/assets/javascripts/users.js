@@ -7,7 +7,7 @@ $(function() {
                 </div>`
     return html;
   }
-  $("#user-search-field").on("keyup", function() {
+  $("#user-search-field").on("input", function() {
     var input = $("#user-search-field").val();
     $.ajax({
       type: 'GET',
@@ -18,10 +18,12 @@ $(function() {
     .done(function(users) {
       $('#user-search-result').empty();
       if (users.length !== 0) {
-        users.forEach(function(user){
-          var html = showUser(user);
-          $('#user-search-result').append(html);
-        });
+        if (input !== '') {
+          users.forEach(function(user){
+            var html = showUser(user);
+            $('#user-search-result').append(html);
+          });
+        }
       } else {
         var html = `<div class="chat-group-user clearfix">
                       <p class="chat-group-user__name">ユーザーが見つかりません</p>
