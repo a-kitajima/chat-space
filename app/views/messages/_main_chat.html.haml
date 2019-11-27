@@ -13,7 +13,7 @@
   
   .messages
     - messages.each do |message|
-      .message
+      .message{data: {message_id: message.id} }
         .message__upper-info
           %p.message__upper-info__talker #{message.user.name}
           %p.message__upper-info__date #{message.created_at.to_s(:datetime)}

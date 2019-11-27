@@ -1,4 +1,5 @@
 $(function() {
+  // 非同期メッセージ送信
   function buildHTML(message){
     var message_image_tag = (message.image_url)?`<img src="${message.image_url}">`:"";
     var html = `<div class="message">
@@ -35,4 +36,31 @@ $(function() {
       $('.submit-btn').prop('disabled', false);
     })
   })
+
+  last_message_id = $('.message:last').data();
+  console.log(last_message_id.messageId)
+  console.log(location.href)
+  var url = location.href.match(/\/groups\/[0-9]{1,}\/messages/);
+  console.log(url[0])
+  url[0] = url[0].replace(/messages/g, 'api/messages');
+  console.log(url[0])
+  // 自動更新
+  // var reloadMessages = function() {
+  //   last_message_id = $('.message:last').data();
+  //   console.log(last_message_id)
+  //   console.log(location.href)
+  //   $.ajax({
+  //     //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
+  //     url: ※※※,
+  //     type: 'get',
+  //     dataType: 'json',
+  //     data: {id: last_message_id}
+  //   })
+  //   .done(function(messages) {
+  //     console.log('success');
+  //   })
+  //   .fail(function() {
+  //     console.log('error');
+  //   });
+  // };
 })
