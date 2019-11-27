@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   before_action :move_to_sign_in
 
+  def index
+    @users = User.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def edit
   end
 
