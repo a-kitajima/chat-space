@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.search(params[:keyword])
+    # @group = Group.find(params[:id])
     respond_to do |format|
-      format.html
       format.json
     end
   end
