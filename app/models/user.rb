@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def print_name
     "#{name}"
   end
+
+  def self.search(search)
+    User.where('name LIKE(?)', "%#{search}%")
+  end
 end
