@@ -1,11 +1,13 @@
 $(function() {
   // ユーザーを検索
   function showUser(user){
+    var user_name = (user.name)?`${user.name}`:'ユーザーが見つかりません';
+    var add_btn = (user.name)?`<div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>`:'';
     var html = `<div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">${user.name}</p>
-                  <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
+                  <p class="chat-group-user__name">${user_name}</p>
+                  ${add_btn}
                 </div>`
-    return html;
+    $('#user-search-result').append(html);
   }
   $("#user-search-field").on("input", function() {
     var input = $("#user-search-field").val();
@@ -20,15 +22,11 @@ $(function() {
       if (users.length !== 0) {
         if (input !== '') {
           users.forEach(function(user){
-            var html = showUser(user);
-            $('#user-search-result').append(html);
+            showUser(user);
           });
         }
       } else {
-        var html = `<div class="chat-group-user clearfix">
-                      <p class="chat-group-user__name">ユーザーが見つかりません</p>
-                    </div>`
-        $('#user-search-result').append(html);
+        showUser('');
       }
     })
     .fail(function() {
