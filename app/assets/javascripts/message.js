@@ -37,7 +37,6 @@ $(function() {
     })
   })
 
-  
   // 自動更新
   var reloadMessages = function() {
     last_message_id = $('.message:last').data().messageId;
@@ -58,8 +57,10 @@ $(function() {
       }
     })
     .fail(function() {
-      console.log('error');
+      alert('メッセージの同期に失敗しました');
     });
   };
-  setInterval(reloadMessages, 7000);
+  if (location.href.match(/\/groups\/[0-9]{1,}\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 })
