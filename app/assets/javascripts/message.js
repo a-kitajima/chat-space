@@ -39,7 +39,7 @@ $(function() {
 
   // 自動更新
   var reloadMessages = function() {
-    last_message_id = $('.message:last').data().messageId;
+    last_message_id = ($('.message').length == 0)?0:$('.message:last').data().messageId;
     url = location.href.match(/\/groups\/[0-9]{1,}\/messages/)[0].replace(/messages/g, 'api/messages');
     $.ajax({
       url: url,
