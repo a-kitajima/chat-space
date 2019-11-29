@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    resize_image(@message.image) if @message.image.file.present?
     respond_to do |format|
       if @message.save
         format.json
@@ -23,13 +22,6 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :image).merge(user_id: current_user.id, group_id: params[:group_id])
-  end
-
-  def resize_image(image)
-    require 'mini_magick'
-    resize_image = MiniMagick::Image.open(image.current_path)
-    resize_image.resize "200x200"
-    resize_image.write image.current_path
   end
 
   def move_to_sign_in
